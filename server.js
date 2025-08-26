@@ -6,7 +6,7 @@ import sessionRoutes from './Routes/SessionRoutes.js';
 
 const server = express();
 server.use(cors({
-    origin: "https://client-therapist-management.vercel.app",
+    origin: "*",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true
 }));
