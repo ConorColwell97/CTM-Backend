@@ -7,7 +7,7 @@ const getAllSessions = (req, res) => {
             return res.status(500).json({error : err.message});
         }
         if(result.length == 0) {
-            return res.status(404).json({error : err.message});
+            return res.status(404).json({error : "No Sessions found"});
         }
 
         res.json(result);
@@ -22,7 +22,7 @@ const getSession = (req, res) => {
             return res.status(500).json({error : err.message});
         }
         if(result.length == 0) {
-            return res.status(404).json({error : err.message});
+            return res.status(404).json({error : "Session not found"});
         }
 
         res.json(result[0]);
@@ -31,12 +31,6 @@ const getSession = (req, res) => {
 
 const addSession = (req, res) => {
     const { Therapist, Client, Notes, SessionDate, Length } = req.body;
-
-    console.log(Therapist);
-    console.log(Client);
-    console.log(Notes);
-    console.log(SessionDate);
-    console.log(Length);
 
     db.query(
         "INSERT INTO Sessions (Therapist, Client, Notes, SessionDate, Length) VALUES (?,?,?,?,?)",

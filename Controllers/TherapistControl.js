@@ -7,7 +7,7 @@ const getAllTherapists = (req, res) => {
             return res.status(500).json({error : err.message});
         }
         if(result.length == 0) {
-            return res.status(404).json({error : err.message});
+            return res.status(404).json({error : "No Therapist found"});
         }
 
         res.json(result);
@@ -22,7 +22,7 @@ const getTherapist = (req, res) => {
             return res.status(500).json({error : err.message});
         }
         if(result.length == 0) {
-            return res.status(404).json({error : err.message});
+            return res.status(404).json({error : "Therapist not found"});
         }
 
         res.json(result[0]);
