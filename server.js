@@ -5,7 +5,12 @@ import clientRoutes from './Routes/ClientRoutes.js';
 import sessionRoutes from './Routes/SessionRoutes.js';
 
 const server = express();
-server.use(cors());
+server.use(cors({
+    origin: "https://client-therapist-management.vercel.app",
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    credentials: true
+}));
+
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
@@ -15,6 +20,6 @@ server.use("/sessions", sessionRoutes);
 
 const PORT = process.env.PORT;
 
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
     console.log(`Server is running on port ${PORT}`);
 });
