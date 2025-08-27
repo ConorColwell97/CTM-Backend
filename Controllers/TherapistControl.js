@@ -16,6 +16,7 @@ const getAllTherapists = (req, res) => {
 
 const getTherapist = (req, res) => {
     const therapistName = req.params.name;
+    console.log(therapistName);
 
     db.query("SELECT * FROM Therapists WHERE Name = ?", [therapistName], (err, result) => {
         if(err) {
@@ -24,7 +25,7 @@ const getTherapist = (req, res) => {
         if(result.length == 0) {
             return res.status(404).json({error : "Therapist not found"});
         }
-
+        console.log(`result: ${result[0]}`);
         res.json(result[0]);
     });
 };
