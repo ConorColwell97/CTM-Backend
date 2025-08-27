@@ -50,7 +50,7 @@ const deleteTherapist = (req, res) => {
     const therapistName = req.params.name;
     console.log(therapistName);
 
-    db.query("DELETE FROM THERAPISTS WHERE email = ?", ["johndoe@gmail.com"], (err, result) => {
+    db.query("DELETE FROM Therapists WHERE email = ?", ["johndoe@gmail.com"], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
