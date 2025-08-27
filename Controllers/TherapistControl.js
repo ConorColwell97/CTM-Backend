@@ -64,7 +64,7 @@ const deleteTherapist = (req, res) => {
 
 const updateName = (req, res) => {
     const currName = req.params.name;
-    const newName = req.body.newName;
+    const newName = req.body.data;
 
     db.query("UPDATE Therapists SET Name = ? WHERE Name = ?", [newName, currName], (err, result) => {
         if(err) {
@@ -81,7 +81,7 @@ const updateName = (req, res) => {
 
 const updateTitle = (req, res) => {
     const currTitle = req.params.title;
-    const newTitle = req.body.newTitle;
+    const newTitle = req.body.data;
 
     console.log(currTitle);
     console.log(newTitle);
@@ -101,7 +101,7 @@ const updateTitle = (req, res) => {
 
 const updateEmail = (req, res) => {
     const currEmail = req.params.email;
-    const newEmail = req.body.newEmail;
+    const newEmail = req.body.data;
 
     db.query("UPDATE Therapists SET Email = ? WHERE Name = ?", [newEmail, currEmail], (err, result) => {
         if(err) {
@@ -118,7 +118,7 @@ const updateEmail = (req, res) => {
 
 const updateLocation = (req, res) => {
     const currLocation = req.params.location;
-    const newLocation = req.body.newLocation;
+    const newLocation = req.body.data;
 
     db.query("UPDATE Therapists SET Location = ? WHERE Name = ?", [newLocation, currLocation], (err, result) => {
         if(err) {
@@ -136,7 +136,7 @@ const updateLocation = (req, res) => {
 
 const updateYears = (req, res) => {
     const currYears = req.params.years;
-    const newYears = req.body.newYears;
+    const newYears = req.body.data;
 
     db.query("UPDATE Therapists SET YearsOfPractice = ? WHERE Name = ?", [newYears, currYears], (err, result) => {
         if(err) {
@@ -153,7 +153,7 @@ const updateYears = (req, res) => {
 
 const updateAvailability = (req, res) => {
     const currAvail = req.params.avail;
-    const newAvail = req.body.newAvail;
+    const newAvail = req.body.data;
 
     db.query("UPDATE Therapists SET Availability = ? WHERE Name = ?", [newAvail, currAvail], (err, result) => {
         if(err) {
