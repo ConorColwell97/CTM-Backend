@@ -76,10 +76,10 @@ const addSession = (req, res) => {
 };
 
 const deleteSession = (req, res) => {
-    const sessionTherapist = req.params.id;
-    console.log("Delete " + sessionTherapist);
+    const session = req.params.id;
+    console.log("Delete " + session);
 
-    db.query("DELETE FROM Sessions WHERE ID = ?", [id], (err, result) => {
+    db.query("DELETE FROM Sessions WHERE ID = ?", [session], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
