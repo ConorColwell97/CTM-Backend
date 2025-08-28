@@ -17,7 +17,7 @@ const getAllSessions = (req, res) => {
 const getSessionByID = (req, res) => {
     const sessionID = req.params.id;
 
-    db.query("SELECT FROM Sessions WHERE ID = ?", [sessionID], (err, result) => {
+    db.query("SELECT * FROM Sessions WHERE ID = ?", [sessionID], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
