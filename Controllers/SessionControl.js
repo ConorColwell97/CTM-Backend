@@ -62,7 +62,7 @@ const deleteSession = (req, res) => {
 };
 
 const updateTherapist = (req, res) => {
-    const currTherapist = req.params.therapist;
+    const currTherapist = req.params.data;
     const newTherapist = req.body.newTherapist;
 
     db.query("UPDATE Sessions SET Therapist = ? WHERE Therapist = ?", [newTherapist, currTherapist], (err, result) => {
@@ -79,7 +79,7 @@ const updateTherapist = (req, res) => {
 }
 
 const updateClient = (req, res) => {
-    const currClient = req.params.client;
+    const currClient = req.params.data;
     const newClient = req.body.newClient;
 
     console.log(currClient);
@@ -99,7 +99,7 @@ const updateClient = (req, res) => {
 }
 
 const updateNotes = (req, res) => {
-    const currNotes = req.params.notes;
+    const currNotes = req.params.data;
     const newNotes = req.body.newNotes;
 
     db.query("UPDATE Sessions SET Notes = ? WHERE Notes = ?", [newNotes, currNotes], (err, result) => {
@@ -116,7 +116,7 @@ const updateNotes = (req, res) => {
 }
 
 const updateDate = (req, res) => {
-    const currDate = req.params.date;
+    const currDate = req.params.data;
     const newDate = req.body.newDate;
 
     db.query("UPDATE Sessions SET SessionDate = ? WHERE SessionDate = ?", [newDate, currDate], (err, result) => {
@@ -134,7 +134,7 @@ const updateDate = (req, res) => {
 }
 
 const updateLength = (req, res) => {
-    const currLength = req.params.len;
+    const currLength = req.params.data;
     const newLength = req.body.newLength;
 
     db.query("UPDATE Sessions SET Length = ? WHERE Length = ?", [newLength, currLength], (err, result) => {

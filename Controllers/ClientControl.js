@@ -63,7 +63,7 @@ const deleteClient = (req, res) => {
 
 const updateName = (req, res) => {
     const currName = req.params.name;
-    const newName = req.body.newName;
+    const newName = req.body.data;
 
     console.log(currName);
     console.log(newName);
@@ -83,7 +83,7 @@ const updateName = (req, res) => {
 
 const updateEmail = (req, res) => {
     const currEmail = req.params.email;
-    const newEmail = req.body.newEmail;
+    const newEmail = req.body.data;
 
     console.log(currEmail);
     console.log(newEmail);
@@ -101,9 +101,29 @@ const updateEmail = (req, res) => {
     });
 }
 
+const updateLocation = (req, res) => {
+    const currLocation = req.params.location;
+    const newLocation = req.body.data;
+
+    console.log(currLocation);
+    console.log(newLocation);
+
+    db.query("UPDATE Clients SET Location = ? WHERE Name = ?", [newLocation, currLocation], (err, result) => {
+        if(err) {
+            return res.status(500).json({ error: err.message });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Client not found" });
+        }
+
+        res.json({ message: "Client Location updated successfully" });
+    });
+}
+
 const updatePhoneNumber = (req, res) => {
     const currNumber = req.params.number;
-    const newNumber = req.body.newNumber;
+    const newNumber = req.body.data;
 
     console.log(currNumber);
     console.log(newNumber);
@@ -124,7 +144,7 @@ const updatePhoneNumber = (req, res) => {
 
 const updateRegularity = (req, res) => {
     const currReg = req.params.reg;
-    const newReg = req.body.newReg;
+    const newReg = req.body.data;
 
     console.log(currReg);
     console.log(newReg);
@@ -142,4 +162,4 @@ const updateRegularity = (req, res) => {
     });
 }
 
-export { getAllClients, getClient, addClient, deleteClient, updateName, updateEmail, updatePhoneNumber, updateRegularity };
+export { getAllClients, getClient, addClient, deleteClient, updateName, updateEmail, updateLocation, updatePhoneNumber, updateRegularity };

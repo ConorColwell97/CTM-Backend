@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllClients, getClient, addClient, deleteClient, updateName, updateEmail, updatePhoneNumber, updateRegularity } from "../Controllers/ClientControl.js";
+import { getAllClients, getClient, addClient, deleteClient, updateName, updateEmail, updateLocation, updatePhoneNumber, updateRegularity } from "../Controllers/ClientControl.js";
 const router = express.Router();
 
 //GET Routes
@@ -15,6 +15,7 @@ router.delete("/name/:name", deleteClient);
 //PATCH Routes
 router.patch("/name/:name", updateName);
 router.patch("/email/:email", updateEmail);
+router.patch("/location/:location", updateLocation);
 router.patch("/number/:number", updatePhoneNumber);
 router.patch("/reg/:reg", updateRegularity);
 
