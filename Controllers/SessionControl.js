@@ -40,7 +40,7 @@ const getSessionByTherapist = (req, res) => {
             return res.status(404).json({error : "Session not found"});
         }
 
-        res.json(result[0]);
+        res.json(result);
     });
 };
 
@@ -55,7 +55,7 @@ const getSessionSessionByClient = (req, res) => {
             return res.status(404).json({error : "Session not found"});
         }
 
-        res.json(result[0]);
+        res.json(result);
     });
 };
 
