@@ -49,7 +49,7 @@ const deleteClient = (req, res) => {
     const clientName = req.params.name;
     console.log(clientName);
 
-    db.query("DELETE FROM Clients WHERE Name = ?", [clientName], (err, result) => {
+    db.query("DELETE FROM Clients WHERE Email = ?", ["garfield@gmail.com"], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
@@ -59,6 +59,17 @@ const deleteClient = (req, res) => {
 
         res.json({message: "Client deleted successfully"});
     });
+
+    // db.query("DELETE FROM Clients WHERE Name = ?", [clientName], (err, result) => {
+    //     if(err) {
+    //         return res.status(500).json({error : err.message});
+    //     }
+    //     if(result.affectedRows == 0) {
+    //         return res.status(404).json({error : "Client not found"});
+    //     }
+
+    //     res.json({message: "Client deleted successfully"});
+    // });
 };
 
 const updateName = (req, res) => {
