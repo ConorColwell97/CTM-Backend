@@ -49,7 +49,7 @@ const addTherapist = (req, res) => {
 const deleteTherapist = (req, res) => {
     const therapistName = req.params.name;
 
-    db.query("DELETE FROM Therapists WHERE Availabilty = ?", ["NOT TAKING CLIENTS"], (err, result) => {
+    db.query("DELETE * FROM Therapists WHERE Availability = ?", ["NOT TAKING CLIENTS"], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
