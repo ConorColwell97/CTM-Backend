@@ -1,10 +1,11 @@
 import express from 'express';
-import { getAllSessions, getSession, addSession, deleteSession, updateTherapist, updateClient, updateNotes, updateDate, updateLength } from "../Controllers/SessionControl.js";
+import { getAllSessions, getSessionByTherapist, getSessionSessionByClient, addSession, deleteSession, updateTherapist, updateClient, updateNotes, updateDate, updateLength } from "../Controllers/SessionControl.js";
 const router = express.Router();
 
 //GET Routes
 router.get("/", getAllSessions);
-router.get("/therapist/:therapist", getSession);
+router.get("/therapist/:therapist", getSessionByTherapist);
+router.get("/client/:client", getSessionSessionByClient);
 
 //POST Route
 router.post("/", addSession);

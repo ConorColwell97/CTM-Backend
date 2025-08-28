@@ -14,10 +14,25 @@ const getAllSessions = (req, res) => {
     });
 };
 
-const getSession = (req, res) => {
+const getSessionByTherapist = (req, res) => {
     const sessionTherapist = req.params.therapist;
 
     db.query("SELECT * FROM Sessions WHERE Therapist = ?", [sessionTherapist], (err, result) => {
+        if(err) {
+            return res.status(500).json({error : err.message});
+        }
+        if(result.length == 0) {
+            return res.status(404).json({error : "Session not found"});
+        }
+
+        res.json(result[0]);
+    });
+};
+
+const getSessionSessionByClient = (req, res) => {
+    const sessionClient = req.params.client;
+
+    db.query("SELECT * FROM Sessions WHERE Client = ?", [sessionClient], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
@@ -149,4 +164,4 @@ const updateLength = (req, res) => {
         res.json({ message: "Session Length updated successfully" });
     });
 }
-export { getAllSessions, getSession, addSession, deleteSession, updateTherapist, updateClient, updateNotes, updateDate, updateLength };
+export { getAllSessions, getSessionByTherapist, getSessionSessionByClient, addSession, deleteSession, updateTherapist, updateClient, updateNotes, updateDate, updateLength };
