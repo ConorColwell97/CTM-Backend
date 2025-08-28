@@ -1,9 +1,10 @@
 import express from 'express';
-import { getAllSessions, getSessionByTherapist, getSessionSessionByClient, addSession, deleteSession, updateTherapist, updateClient, updateNotes, updateDate, updateLength } from "../Controllers/SessionControl.js";
+import { getAllSessions, getSessionByID, getSessionByTherapist, getSessionSessionByClient, addSession, deleteSession, updateTherapist, updateClient, updateNotes, updateDate, updateLength } from "../Controllers/SessionControl.js";
 const router = express.Router();
 
 //GET Routes
 router.get("/", getAllSessions);
+router.get("/id/:id", getSessionByID);
 router.get("/therapist/:therapist", getSessionByTherapist);
 router.get("/client/:client", getSessionSessionByClient);
 
@@ -11,13 +12,13 @@ router.get("/client/:client", getSessionSessionByClient);
 router.post("/", addSession);
 
 //DELETE Route
-router.delete("/therapist/:therapist", deleteSession);
+router.delete("/session/:id", deleteSession);
 
 //PATCH Routes
-router.patch("/therapist/:therapist", updateTherapist);
-router.patch("/client/:client", updateClient);
-router.patch("/notes/:notes", updateNotes);
-router.patch("/date/:date", updateDate);
-router.patch("/len/:len", updateLength);
+router.patch("/therapist/:id", updateTherapist);
+router.patch("/client/:id", updateClient);
+router.patch("/notes/:id", updateNotes);
+router.patch("/date/:id", updateDate);
+router.patch("/len/:id", updateLength);
 
 export default router;
