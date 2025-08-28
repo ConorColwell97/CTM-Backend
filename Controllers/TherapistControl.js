@@ -49,7 +49,7 @@ const addTherapist = (req, res) => {
 const deleteTherapist = (req, res) => {
     const therapistName = req.params.name;
 
-    db.query("DELETE FROM Therapists WHERE Availability = ?", ["NOT TAKING CLIENTS"], (err, result) => {
+    db.query("DELETE FROM Therapists WHERE Name = ?", [therapistName], (err, result) => {
         if(err) {
             return res.status(500).json({error : err.message});
         }
@@ -59,17 +59,6 @@ const deleteTherapist = (req, res) => {
 
         res.json({message: "Therapist deleted successfully"});
     });
-
-    // db.query("DELETE FROM Therapists WHERE Name = ?", [therapistName], (err, result) => {
-    //     if(err) {
-    //         return res.status(500).json({error : err.message});
-    //     }
-    //     if(result.affectedRows == 0) {
-    //         return res.status(404).json({error : "Therapist not found"});
-    //     }
-
-    //     res.json({message: "Therapist deleted successfully"});
-    // });
 };
 
 const updateName = (req, res) => {
