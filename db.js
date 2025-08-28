@@ -42,12 +42,6 @@ connection.query(`CREATE TABLE IF NOT EXISTS Clients (
                 throw err;
             }
         });
-connection.query(`DROP TABLE Sessions;`,(err, result) => {
-            if(err) {
-                throw err;
-            }
-        });
-
 
 connection.query(`CREATE TABLE IF NOT EXISTS Sessions (
             ID int PRIMARY KEY AUTO_INCREMENT,
