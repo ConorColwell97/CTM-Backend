@@ -30,11 +30,11 @@ const getClient = (req, res) => {
 };
 
 const addClient = (req, res) => {
-    const { Name, Email, PhoneNumber, Regularity } = req.body;
+    const { Name, Email, Location, PhoneNumber, Regularity } = req.body;
 
     db.query(
-        "INSERT INTO Clients (Name, Email, PhoneNumber, Regularity) VALUES (?,?,?,?)",
-        [Name, Email, PhoneNumber, Regularity],
+        "INSERT INTO Clients (Name, Email, Location, PhoneNumber, Regularity) VALUES (?,?,?,?,?)",
+        [Name, Email, Location, PhoneNumber, Regularity],
         (err) => {
             if(err) {
                 return res.status(500).json({error: err.message});
