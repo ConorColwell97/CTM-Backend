@@ -6,8 +6,7 @@ import sessionRoutes from './Routes/SessionRoutes.js';
 
 const server = express();
 server.use(cors({
-    origin: "*",
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    origin: process.env.URL,
     credentials: true
 }));
 
@@ -20,6 +19,6 @@ server.use("/sessions", sessionRoutes);
 
 const PORT = process.env.PORT || 8080;
 
-server.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

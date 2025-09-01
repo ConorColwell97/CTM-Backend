@@ -1,21 +1,18 @@
 import mysql from 'mysql2';
 import 'dotenv/config';
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: process.env.MYSQLHOST,
     user: process.env.MYSQLUSER,
     password: process.env.MYSQLPASSWORD,
     database: process.env.MYSQLDATABASE,
-    port: process.env.MYSQLPORT
+    port: process.env.MYSQLPORT,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 20,
+    acquireTimeout: 30000,
+    connectTimeout: 30000
 });
-
-connection.connect(function (err) {
-    if (err) {
-        throw err;
-    }
-    console.log("Connected!");
-});
-
 
 connection.query(`CREATE TABLE IF NOT EXISTS Therapists (
             Name varchar(30) PRIMARY KEY,
